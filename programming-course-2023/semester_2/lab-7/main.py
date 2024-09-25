@@ -1,6 +1,4 @@
-from tasks import benchmarkTask
-from tasks import histogramTask
-from tasks import formulaChartTask
+from tasks import benchmarkTask, histogramTask, formulaChartTask
 
 # Task 1
 benchmarkTask.ArrayMultiplicationBenchmark().run()
