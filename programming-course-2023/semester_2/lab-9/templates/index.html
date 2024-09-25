@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №9</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: white;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .clear-button {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .clear-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Список посещенных городов</h1>
+    <form method="POST">
+        <label for="town">Название города</label>
+        <input type="text" id="town" name="town" required>
+        <label for="visit_date">Дата посещения города</label>
+        <input type="date" id="visit_date" name="visit_date" required>
+        <button type="submit">Добавить</button>
+    </form>
+    <form method="POST">
+        <input type="hidden" name="clear" value="true">
+        <button type="submit" class="clear-button">Очистить города</button>
+    </form>
+    <ul>
+        {% for city in cities %}
+        <li>{{ city.town }} - {{ city.visit_date.strftime('%d.%m.%Y') }}</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
