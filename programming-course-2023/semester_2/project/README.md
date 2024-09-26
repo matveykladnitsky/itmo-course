@@ -12,9 +12,13 @@
 
 2. Создайте файл `config.py` и добавьте в него токен вашего бота и токен вашего Todoist:
    ```python
-   TOKEN = "..."
-   TODOIST_TOKEN = "..."
+   import os
    ```
+
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TODOIST_API_TOKEN = os.getenv("TODOIST_API_TOKEN")
+
+````
 
 ## Запуск
 
@@ -22,4 +26,4 @@
 
 ```bash
 python3 main.py
-```
+````
