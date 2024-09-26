@@ -30,18 +30,25 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         f'Для включения напоминаний введите команду /setup')
 
 
+async def healthcheck(request):
+    return web.Response(text="OK")
+
+
+async def run_web_app():
+    web_app = web.Application()
+    web_app.router.add_get('/healthcheck', healthcheck)
+    await web.run_app(web_app, port=8000)
+
+
 app = ApplicationBuilder().token(TOKEN).build()
 
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("setup", setup))
 
 
-async def healthcheck(request):
-    return web.Response(text="OK")
+def main():
+    app.run_polling()
 
-web_app = web.Application()
-web_app.router.add_get('/healthcheck', healthcheck)
 
 if __name__ == '__main__':
-    app.run_polling()
-    web.run_app(web_app, port=8000)
+    main()
