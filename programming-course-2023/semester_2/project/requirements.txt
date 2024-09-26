@@ -5,3 +5,4 @@ python-telegram-bot[job-queue]
 urllib3==1.26.15
 schedule
 python-dotenv
+aiohttp

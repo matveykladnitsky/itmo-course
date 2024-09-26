@@ -1,4 +1,5 @@
 from telegram import Update
+from aiohttp import web
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 from config import TOKEN, TODOIST_API_TOKEN
 from reminder.module import ReminderModule
@@ -33,4 +34,14 @@ app = ApplicationBuilder().token(TOKEN).build()
 
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("setup", setup))
-app.run_polling()
+
+
+async def healthcheck(request):
+    return web.Response(text="OK")
+
+web_app = web.Application()
+web_app.router.add_get('/healthcheck', healthcheck)
+
+if __name__ == '__main__':
+    app.run_polling()
+    web.run_app(web_app, port=8000)
