@@ -8,6 +8,7 @@ from bot.module import BotModule
 
 
 async def setup(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    print('/setup', update.effective_user.first_name)
     # Инициализация модулей и запуск напоминаний для пользователя
     reminder_module = ReminderModule(
         app=app,
@@ -22,23 +23,13 @@ async def setup(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    print('/start', update.effective_user.first_name)
     await update.message.reply_text(
         f'Добрый день, {update.effective_user.first_name}!')
     await update.message.reply_text(
         f'Я буду напоминать тебе о твоих задачах в Todoist два раза в день. Утром и вечером.')
     await update.message.reply_text(
         f'Для включения напоминаний введите команду /setup')
-
-
-async def healthcheck(request):
-    return web.Response(text="OK")
-
-
-async def run_web_app():
-    web_app = web.Application()
-    web_app.router.add_get('/healthcheck', healthcheck)
-    await web.run_app(web_app, port=8000)
-
 
 app = ApplicationBuilder().token(TOKEN).build()
 
