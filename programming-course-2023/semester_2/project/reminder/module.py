@@ -8,7 +8,7 @@ import threading
 class ReminderModule:
     timezone = pytz.timezone('Europe/Moscow')
     time_to_send_list = [time(hour=7, minute=0, tzinfo=timezone), time(
-        hour=20, minute=05, tzinfo=timezone)]
+        hour=20, minute=10, tzinfo=timezone)]
 
     def __init__(self, app, taskModule, botModule, user_id: int):
         self.app = app
