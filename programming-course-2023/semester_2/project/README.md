@@ -10,15 +10,14 @@
    pip install -r requirements.txt
    ```
 
-2. Создайте файл `config.py` и добавьте в него токен вашего бота и токен вашего Todoist:
-   ```python
-   import os
+2. Создайте файл `.env` и добавьте в него токен вашего бота и токен вашего Todoist:
+
+   ```bash
+   TELEGRAM_BOT_TOKEN=<your_telegram_bot_token>
+   TODOIST_API_TOKEN=<your_todoist_api_token>
    ```
 
-TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-TODOIST_API_TOKEN = os.getenv("TODOIST_API_TOKEN")
-
-````
+Или установите переменные окружения в вашей операционной системе.
 
 ## Запуск
 
@@ -26,4 +25,4 @@ TODOIST_API_TOKEN = os.getenv("TODOIST_API_TOKEN")
 
 ```bash
 python3 main.py
-````
+```
