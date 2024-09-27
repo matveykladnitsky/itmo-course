@@ -1,14 +1,13 @@
 from datetime import time
-import pytz
 import schedule
 import time as time_module
 import threading
 
 
 class ReminderModule:
-    timezone = pytz.timezone('Europe/Moscow')
-    time_to_send_list = [time(hour=7, minute=30, tzinfo=timezone), time(
-        hour=20, minute=30, tzinfo=timezone)]
+    # Указываем время в UTC 0
+    time_to_send_list = [time(hour=5, minute=30), time(
+        hour=17, minute=30)]
 
     def __init__(self, app, taskModule, botModule, user_id: int):
         self.app = app
